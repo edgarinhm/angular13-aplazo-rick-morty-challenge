@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Location } from '../../interfaces/locations.interface';
 import { LocationsPageActions } from '../../state/actions';
 import { selectAllLocations } from '../../state/store/locations.store';
+import { SearchPageActions } from 'src/app/features/search/components/state/actions';
 
 @Component({
   selector: 'app-locations-list',
@@ -20,6 +21,11 @@ export class LocationsListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(LocationsPageActions.enter());
+    this.store.dispatch(
+      SearchPageActions.activeCollectionLoaded({
+        activeCollection: 'location',
+      })
+    );
   }
 
   showDetails(location: Location): void {

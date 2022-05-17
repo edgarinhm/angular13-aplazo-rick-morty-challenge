@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
+import { SearchPageActions } from 'src/app/features/search/components/state/actions';
 import { Character } from '../../interfaces/character.interface';
 import { CharactersPageActions } from '../../state/actions';
 import { selectAllCharacters } from '../../state/store/characters.store';
@@ -37,6 +38,11 @@ export class CharactersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(CharactersPageActions.enter());
+    this.store.dispatch(
+      SearchPageActions.activeCollectionLoaded({
+        activeCollection: 'character',
+      })
+    );
   }
 
   showDetails(character: Character): void {

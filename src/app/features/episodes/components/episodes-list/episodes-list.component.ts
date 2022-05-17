@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { selectAllEpisodes } from '../../state/store/episodes.store';
 import { EpisodesPageActions } from '../../state/actions';
+import { SearchPageActions } from 'src/app/features/search/components/state/actions';
 
 @Component({
   selector: 'app-episodes-list',
@@ -20,6 +21,11 @@ export class EpisodesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(EpisodesPageActions.enter());
+    this.store.dispatch(
+      SearchPageActions.activeCollectionLoaded({
+        activeCollection: 'episode',
+      })
+    );
   }
 
   showDetails(episode: Episode): void {
