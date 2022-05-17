@@ -1,0 +1,9 @@
+<div class="gallery-container">
+  <div class="card" *ngFor="let location of locations$ | async">
+    <div (click)="showDetails(location)">
+      <p><strong>Name: </strong>{{location.name}}</p>
+      <p><strong>Type: </strong>{{location.type}}</p>
+      <p><strong>Dimension: </strong>{{location.dimension}}</p>
+    </div>
+  </div>
+</div>
