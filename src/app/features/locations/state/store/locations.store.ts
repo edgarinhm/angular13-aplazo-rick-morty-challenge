@@ -8,7 +8,7 @@ import {
 } from '@ngrx/store';
 import { fromLocationsReducers } from '../reducer';
 
-export const FEATURE_KEY = 'shared-Locations';
+export const FEATURE_KEY = 'shared-locations';
 
 export interface State {
   locations: fromLocationsReducers.State;

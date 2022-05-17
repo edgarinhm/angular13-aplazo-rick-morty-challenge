@@ -1,3 +1,9 @@
-<p>
-  episodes-list works!
-</p>
+<div class="gallery-container">
+  <div class="card" *ngFor="let epidode of episodes$ | async">
+    <div (click)="showDetails(epidode)">
+      <p><strong>Name: </strong>{{epidode.name}}</p>
+      <p><strong>Air Date: </strong>{{epidode.air_date}}</p>
+      <p><strong>Epidode: </strong>{{epidode.episode}}</p>
+    </div>
+  </div>
+</div>
