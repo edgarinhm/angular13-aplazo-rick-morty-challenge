@@ -21,6 +21,11 @@ const routes: Routes = [
             (m) => m.LocationsModule
           ),
       },
+      {
+        path: 'episodes',
+        loadChildren: () =>
+          import('../episodes/episodes.module').then((m) => m.EpisodesModule),
+      },
     ],
   },
 ];
