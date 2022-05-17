@@ -1,0 +1,9 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+
+  &_tabs {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,12 @@
+<div class="detail-container">
+  <div class="card" *ngIf="(currentCharacter$  | async) as character ">
+    <img [src]="character.image" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><strong>{{character.name}}</strong></h4>
+      <p><strong>Species </strong>{{character.species}}</p>
+      <p><strong>Gender </strong>{{character.gender}}</p>
+      <p><strong>Status </strong>{{character.status}}</p>
+      <p><button class="primary" (click)="back()">Back</button></p>
+    </div>
+  </div>
+</div>
