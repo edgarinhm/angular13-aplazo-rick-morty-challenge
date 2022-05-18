@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { SearchPageActions } from '../state/actions';
 import { selectActiveCollection } from '../state/store/search.store';
 import { SearchService } from '../../services/search.service';
@@ -13,10 +12,13 @@ import { EpisodesApiActions } from 'src/app/features/episodes/state/actions';
   templateUrl: './search-bar.component.html',
 })
 export class SearchBarComponent implements OnInit {
-  currenTCollection$: Observable<string | null>;
+  currenTCollection: string | null;
 
   constructor(private store: Store, private searchService: SearchService) {
-    this.currenTCollection$ = store.select(selectActiveCollection);
+    this.currenTCollection = '';
+    store.select(selectActiveCollection).subscribe((collection) => {
+      this.currenTCollection = collection;
+    });
   }
 
   ngOnInit() {
@@ -24,27 +26,25 @@ export class SearchBarComponent implements OnInit {
   }
 
   search(query: string) {
-    const collection = 'character'; //TODO pass currenTCollection value
     this.searchService
-      .searchByName(collection, query)
+      .searchByName(this.currenTCollection, query)
       .subscribe((filterCollection) => {
-        console.log('filterCollection', filterCollection);
-        if (collection === 'character') {
+        if (this.currenTCollection === 'character') {
           this.store.dispatch(
             CharactersApiActions.charactersLoaded({
-              characters: filterCollection.results,
+              characters: [...filterCollection.results],
             })
           );
-        } else if (collection === 'location') {
+        } else if (this.currenTCollection === 'location') {
           this.store.dispatch(
             LocationsApiActions.locationsLoaded({
-              locations: filterCollection.results,
+              locations: [...filterCollection.results],
             })
           );
-        } else if (collection === 'episode') {
+        } else if (this.currenTCollection === 'episode') {
           this.store.dispatch(
             EpisodesApiActions.episodesLoaded({
-              episodes: filterCollection.results,
+              episodes: [...filterCollection.results],
             })
           );
         }
