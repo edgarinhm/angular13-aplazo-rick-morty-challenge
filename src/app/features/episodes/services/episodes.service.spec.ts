@@ -23,7 +23,7 @@ describe('EpisodesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it(`should fetch posts ids 1,183 as an Observable`, waitForAsync(
+  it(`should fetch posts episodes ids 10,28 as an Observable`, waitForAsync(
     inject([HttpTestingController, EpisodesService], () => {
       const postItem = [
         {
