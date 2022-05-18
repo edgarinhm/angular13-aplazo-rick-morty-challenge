@@ -21,6 +21,6 @@ export class EpisodesService {
   }
 
   findEpisodeById(id: string = ''): Observable<Episode> {
-    return this.http.get<Episode>(this.BASE_URL + `/${id}`, {});
+    return this.http.get<Episode>(this.BASE_URL + `/[${id}]`, {});
   }
 }

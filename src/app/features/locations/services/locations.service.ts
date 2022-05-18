@@ -20,6 +20,6 @@ export class LocationsService {
   }
 
   findLocationById(id: string = ''): Observable<Location> {
-    return this.http.get<Location>(this.BASE_URL + `/${id}`, {});
+    return this.http.get<Location>(this.BASE_URL + `/[${id}]`, {});
   }
 }
