@@ -34,6 +34,6 @@ export class EpisodesListComponent implements OnInit {
         activeEpisodeId: episode.id,
       })
     );
-    this.router.navigate(['/episodes/characters']);
+    this.router.navigate(['/locations/residents']);
   }
 }

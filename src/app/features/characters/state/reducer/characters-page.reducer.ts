@@ -5,11 +5,13 @@ import { Character } from '../../interfaces/character.interface';
 export interface State {
   collection: Character[];
   activeCharacterId: string | null;
+  residents: string[];
 }
 
 export const initialState: State = {
   collection: [],
   activeCharacterId: null,
+  residents: [],
 };
 
 export const reducer = createReducer(
@@ -32,11 +34,16 @@ export const reducer = createReducer(
       collection: action.characters,
     };
   }),
-
   on(CharactersApiActions.characterDetails, (state, action) => {
     return {
       ...state,
       character: action.character,
+    };
+  }),
+  on(CharactersPageActions.selectResidents, (state, action) => {
+    return {
+      ...state,
+      residents: action.residents,
     };
   })
 );
