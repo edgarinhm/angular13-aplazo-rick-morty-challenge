@@ -42,3 +42,8 @@ export const selectActiveCharacter = createSelector(
   selectCharactersState,
   fromCharactersReducers.selectActiveCharacter
 );
+
+export const selectAllResidents = createSelector(
+  selectCharactersState,
+  fromCharactersReducers.selectResidents
+);

@@ -7,6 +7,7 @@ import { LocationsPageActions } from '../../state/actions';
 import { selectAllLocations } from '../../state/store/locations.store';
 import { SearchPageActions } from 'src/app/features/search/components/state/actions';
 import { CharactersPageActions } from 'src/app/features/characters/state/actions';
+import { getResidentsIds } from '../../../../core/utils/get-residents-ids';
 
 @Component({
   selector: 'app-locations-list',
@@ -35,10 +36,9 @@ export class LocationsListComponent implements OnInit {
         activeLocationId: location.id,
       })
     );
-
     this.store.dispatch(
       CharactersPageActions.selectResidents({
-        residents: location.residents,
+        residents: getResidentsIds(location.residents),
       })
     );
     this.router.navigate(['/locations/residents']);

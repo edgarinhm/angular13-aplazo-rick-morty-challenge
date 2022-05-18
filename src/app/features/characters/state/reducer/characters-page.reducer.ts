@@ -5,13 +5,13 @@ import { Character } from '../../interfaces/character.interface';
 export interface State {
   collection: Character[];
   activeCharacterId: string | null;
-  residents: string[];
+  residents: string | null;
 }
 
 export const initialState: State = {
   collection: [],
   activeCharacterId: null,
-  residents: [],
+  residents: null,
 };
 
 export const reducer = createReducer(
@@ -60,3 +60,4 @@ export const selectActiveCharacter = createSelector(
     );
   }
 );
+export const selectResidents = (state: State) => state.residents;

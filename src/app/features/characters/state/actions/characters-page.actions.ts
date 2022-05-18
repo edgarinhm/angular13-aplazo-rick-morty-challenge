@@ -7,5 +7,7 @@ export const selectCharacter = createAction(
 );
 export const selectResidents = createAction(
   '[Residents List] Residents Loaded Success',
-  props<{ residents: string[] }>()
+  props<{ residents: string }>()
 );
+
+export const residentsLoaded = createAction('[Residents List] Enter');

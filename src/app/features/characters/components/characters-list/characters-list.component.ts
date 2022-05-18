@@ -15,7 +15,11 @@ import { Observable } from 'rxjs';
 import { SearchPageActions } from 'src/app/features/search/components/state/actions';
 import { Character } from '../../interfaces/character.interface';
 import { CharactersPageActions } from '../../state/actions';
-import { selectAllCharacters } from '../../state/store/characters.store';
+import { CharactersService } from '../../services/characters.service';
+import {
+  selectAllCharacters,
+  selectAllResidents,
+} from '../../state/store/characters.store';
 
 @Component({
   selector: 'app-characters-list',
@@ -32,8 +36,13 @@ export class CharactersListComponent implements OnInit {
   @Output() pagesChange: EventEmitter<any> = new EventEmitter();
   @Output() currentPageChange: EventEmitter<number> = new EventEmitter();
   scrollBarOffset = false;
-  constructor(private store: Store, private router: Router) {
+  constructor(
+    private store: Store,
+    private router: Router,
+    private charactersService: CharactersService
+  ) {
     this.characters$ = store.select(selectAllCharacters);
+    this.loadResidents();
   }
 
   ngOnInit(): void {
@@ -52,6 +61,14 @@ export class CharactersListComponent implements OnInit {
       })
     );
     this.router.navigate(['/characters/details']);
+  }
+
+  loadResidents() {
+    this.store.select(selectAllResidents).subscribe((residents) => {
+      if (residents) {
+        this.characters$ = this.charactersService.characterById(residents);
+      }
+    });
   }
 
   @HostListener('window:scroll', [])

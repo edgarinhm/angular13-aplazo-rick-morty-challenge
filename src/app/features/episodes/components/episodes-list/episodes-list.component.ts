@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { selectAllEpisodes } from '../../state/store/episodes.store';
 import { EpisodesPageActions } from '../../state/actions';
 import { SearchPageActions } from 'src/app/features/search/components/state/actions';
+import { CharactersPageActions } from 'src/app/features/characters/state/actions';
+import { getResidentsIds } from '../../../../core/utils/get-residents-ids';
 
 @Component({
   selector: 'app-episodes-list',
@@ -32,6 +34,11 @@ export class EpisodesListComponent implements OnInit {
     this.store.dispatch(
       EpisodesPageActions.selectEpisode({
         activeEpisodeId: episode.id,
+      })
+    );
+    this.store.dispatch(
+      CharactersPageActions.selectResidents({
+        residents: getResidentsIds(episode.characters),
       })
     );
     this.router.navigate(['/locations/residents']);

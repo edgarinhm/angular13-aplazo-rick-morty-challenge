@@ -20,7 +20,7 @@ export class CharactersService {
     );
   }
 
-  characterById(id: string = ''): Observable<Character> {
-    return this.http.get<Character>(this.BASE_URL + `character/${id}`, {});
+  characterById(id: string = ''): Observable<Character[]> {
+    return this.http.get<Character[]>(this.BASE_URL + `character/[${id}]`, {});
   }
 }
