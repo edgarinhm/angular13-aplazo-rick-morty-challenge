@@ -50,4 +50,9 @@ export class SearchBarComponent implements OnInit {
         }
       });
   }
+
+  handleSubmit(event: any, inputQuery: string) {
+    event.preventDefault();
+    this.search(inputQuery);
+  }
 }

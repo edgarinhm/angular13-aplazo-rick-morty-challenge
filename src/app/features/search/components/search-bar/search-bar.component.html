@@ -1,5 +1,5 @@
-<form class="d-flex input-group w-auto">
-  <input name="inputQuery" #inputQuery type="search" class="form-control" placeholder="Type query"
+<form class="d-flex input-group w-auto" (keydown.enter)="handleSubmit($event, inputQuery.value)">
+  <input name=" inputQuery" #inputQuery type="search" class="form-control" placeholder="Type query"
     aria-label="Search" />
   <button class="btn btn-outline-primary" type="button" (click)="search(inputQuery.value)">
     Search
