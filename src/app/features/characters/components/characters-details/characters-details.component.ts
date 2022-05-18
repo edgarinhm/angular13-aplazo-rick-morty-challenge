@@ -21,6 +21,6 @@ export class CharactersDetailsComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/characters']);
   }
 }
