@@ -1,0 +1,8 @@
+## This rule redirects to an external API
+[build]
+   publish = "dist/angular-aplazo-challenge"
+  command = "ng build"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
